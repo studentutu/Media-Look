@@ -1,41 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Media Look</title>
     <link rel="stylesheet" href="./css/styles.css">
-
 </head>
 <body>
 
-  <div class="nav-bar" id="First" width="100" height="100">
-        <ul id="menulist">
-              <li id="hideB">Hide under</li>
-              <li>Show under</li>
-              <li>Another one</li>
-        </ul>
-
-        <div class="playerStuff">
-        <audio autoplay="autoplay" controls="controls"><source src="media/GorillazCHORUSREMIX.mp4" type="audio/mpeg" /></audio>
-        </div>
+  <div id="sidenav">
+    <div class="playerStuff"><!--  controls="controls" -->
+    <audio id="player" autoplay="autoplay"><source src="media/GorillazCHORUSREMIX.mp4" type="audio/mpeg" /></audio>
+    </div>
+  </div>
+  <div class="content">
+    <div class="hide" id="video"></div>
+    <div class="hide" id="music"></div>
+    <div class="hide" id="webWikipedia"> </div>
+    <div class="hide" id="models"></div>
+    <div class="hide" id="literature"></div>
+    <div id="footer"> </br></br> <p> Copyright 2017 by Roman Fedorov </br>Magistr </p> </br></div>
   </div>
 
-  <div class="visible" id="menu"></div>
-  <div class="visible" id="video"></div>
-  <div class="visible" id="music"></div>
-  <div class="hide" id="webWikipedia"> </div>
-  <div class="hide" id="models"></div>
-  <div class="visible" id="literature"></div>
-
-
-
-  <div id="footer"> </br></br> <p> Copyright 2017 by Roman Fedorov </br>Magistr </p> </br></div>
   <!-- Script that runs everything -->
-  <script src="./js/easyToUseJs.js"></script>
+<script src="./js/easyToUseJs.js"></script>
   <!-- jQuery library -->
-  <script src="./js/jquery.min.js"></script>
-
+<script src="./js/jquery.min.js"></script>
 </body>
 </html>

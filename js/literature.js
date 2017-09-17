@@ -4,9 +4,14 @@
 exports.createLiteratureDiv = function () {
   // body...
 
-    var literature = document.getElementById('literature');
+    let literature = document.getElementById('literature');
         literature.style.width = "100%";
-    var olForLiteracy = document.createElement('ol');
+    let title = document.createElement('p');
+        title.setAttribute('class','title');
+        title.innerHTML = " Used Literature ";
+        literature.appendChild(title);
+
+    let olForLiteracy = document.createElement('ol');
         literature.appendChild(olForLiteracy);
     createLiterSourcs("w3schools.com/css");
     createLiterSourcs("w3schools.com/DOM");
@@ -21,8 +26,8 @@ exports.createLiteratureDiv = function () {
     createLiterSourcs("MSI - documentation");
     createLiterSourcs("Wikipedia - free encyclopedia");
 
-    function createLiterSourcs( textToLi) {
-          var li = document.createElement("li");
+    function createLiterSourcs(textToLi) {
+          let li = document.createElement("li");
               li.setAttribute("class","itemsForOl");
               li.innerHTML = textToLi;
           olForLiteracy.appendChild(li);
