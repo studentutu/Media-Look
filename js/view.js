@@ -20,6 +20,9 @@ exports.exactly = function (number) {
           hide("literature");
           show("musicDiv");
           break;
+          case "fix":
+                if(document.getElementById("audioplayer").className === "hide"){show("audioplayer");}else{hide("audioplayer");}
+          break;
 
         }
         function hide(id) {

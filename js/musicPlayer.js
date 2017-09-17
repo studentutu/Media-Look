@@ -21,24 +21,41 @@ exports.myPlayer = function () {
             track.appendChild(src);
 
         //Will be shown
-        custom();
+        skeleton();
         audioDiv.appendChild(track);
 
-    function custom() {
+    function skeleton() {
           // body...
+
                 let audioplayerDiv = document.createElement('div');
                     audioplayerDiv.setAttribute('id','audioplayer');
+                    audioplayerDiv.setAttribute('class',"hide");
                     audioDiv.appendChild(audioplayerDiv);
+
+                let invisibleButNeeded = document.createElement('div');
+                    invisibleButNeeded.setAttribute("id","centeredAudioPlayer");
+
                 let bton = document.createElement('button');
+                    bton.setAttribute("id","prevButton");
+                    invisibleButNeeded.appendChild(bton);
+
+                    bton = document.createElement('button');
                     bton.setAttribute("id","pButton");
                     bton.setAttribute("class","pause"); // when autoplay --> class pause!
-                    audioplayerDiv.appendChild(bton);
+                    invisibleButNeeded.appendChild(bton);
+
                 let timelineDiv = document.createElement('div');
                     timelineDiv.setAttribute('id','timeline');
                     let playheadDiv = document.createElement('div');
                         playheadDiv.setAttribute("id","playhead");
-                        timelineDiv.appendChild(playheadDiv);
-                    audioplayerDiv.appendChild(timelineDiv);
+                    timelineDiv.appendChild(playheadDiv);
+                    invisibleButNeeded.appendChild(timelineDiv);
+
+                    bton = document.createElement('button');
+                    bton.setAttribute("id","nextButton");
+                    invisibleButNeeded.appendChild(bton);
+
+                audioplayerDiv.appendChild(invisibleButNeeded);
 
     };
     var music = document.getElementById('music'); // id for audio element

@@ -9,6 +9,8 @@ exports.createMenuFrom = function () {
     createLiForMe("Literature","1");
     createLiForMe("Galerie","2");
     createLiForMe("Music","3");
+    createLiForMe("Togle", "fix");
+
 
     function createLiForMe(textToLi, id) {
         let li = document.createElement("li");
@@ -17,4 +19,5 @@ exports.createMenuFrom = function () {
             li.setAttribute("id",id);
         ulForMenu.appendChild(li);
     }
+
 };
