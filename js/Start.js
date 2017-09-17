@@ -16,11 +16,11 @@ $(document).ready(function() {
     literature.createLiteratureDiv();
     musicGalerie.musicForm();
 
-    $(function () {
+    //$(function () {
         $('.navigation').click(function(){
           view.exactly($(this).attr('id'));
         });
-    });
+    //});
 
     sidePlayer.myPlayer();
 

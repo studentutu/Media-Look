@@ -29,7 +29,10 @@ exports.myPlayer = function () {
 
                 let audioplayerDiv = document.createElement('div');
                     audioplayerDiv.setAttribute('id','audioplayer');
-                    audioplayerDiv.setAttribute('class',"hide");
+                    //!!! Very Important bug!
+                    //works only if visible so the time could be taken!
+                    //audioplayerDiv.setAttribute('class',"hide");
+
                     audioDiv.appendChild(audioplayerDiv);
 
                 let invisibleButNeeded = document.createElement('div');
@@ -57,7 +60,9 @@ exports.myPlayer = function () {
 
                 audioplayerDiv.appendChild(invisibleButNeeded);
 
+
     };
+
     var music = document.getElementById('music'); // id for audio element
         var duration = music.duration; // Duration of audio clip, calculated here for embedding purposes
         var pButton = document.getElementById('pButton'); // play button
@@ -66,7 +71,8 @@ exports.myPlayer = function () {
 
         // timeline width adjusted for playhead
         var timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
-
+        //Bug-fix
+        document.getElementById('audioplayer').setAttribute('class',"hide");
         // play button event listenter
         pButton.addEventListener("click", play);
 
@@ -79,7 +85,7 @@ exports.myPlayer = function () {
             music.currentTime = duration * clickPercent(event);
         }, false);
 
-        // returns click as decimal (.77) of the total timelineWidth
+        // returns click as decimal (.77) % of the total timelineWidth
         function clickPercent(event) {
             return (event.clientX - getPosition(timeline)) / timelineWidth;
         }
@@ -101,7 +107,7 @@ exports.myPlayer = function () {
         // mouseUp EventListener
         // getting input from all mouse clicks
         function mouseUp(event) {
-            if (onplayhead == true) {
+            if (onplayhead === true) {
                 moveplayhead(event);
                 window.removeEventListener('mousemove', moveplayhead, true);
                 // change current time

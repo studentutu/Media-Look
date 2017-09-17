@@ -1,4 +1,35 @@
 exports.exactly = function (number) {
+
+   var execute = {
+    "0": function () {
+      show("webWikipedia");
+      hide("literature");
+      hide("musicDiv");
+    },
+    "1": function () {
+      hide("webWikipedia");
+      show("literature");
+      hide("musicDiv");
+    },
+    "2": function () {
+      show("webWikipedia");
+      show("literature");
+      hide("musicDiv");
+    },
+    "3": function () {
+      hide("webWikipedia");
+      hide("literature");
+      show("musicDiv");
+    },
+    "fix": function () {
+      if(document.getElementById("audioplayer").className === "hide"){
+        show("audioplayer");
+      }else{hide("audioplayer");}
+    }
+  }
+  execute[number]();
+
+/*
         switch (number) {
           case "0":
           show("webWikipedia");
@@ -25,6 +56,8 @@ exports.exactly = function (number) {
           break;
 
         }
+        */
+
         function hide(id) {
                 //jquery
                 $(document.getElementById(id)).hide("slow");

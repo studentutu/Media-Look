@@ -6,9 +6,11 @@ It might exceed my expactations.
 I mean it could be a great product - stand alone application for creation and managing websites.
 
 # TO DO:
+ - Fix bug player timescale *
+ - add volume BTN *
+ - Add change sources logic, might need jquery *
  - Add video player
- - Add post's logic
- - Add change sources logic, might need jquery
+ - Add post's logic 
  - Add emdbedded 3d Viwer
  - Add music folder
  - Add video folder
