@@ -8,6 +8,7 @@ exports.createMenuFrom = function () {
     createLiForMe("Wikipedia","0");
     createLiForMe("Literature","1");
     createLiForMe("Galerie","2");
+    createLiForMe("Music","3");
 
     function createLiForMe(textToLi, id) {
         let li = document.createElement("li");
