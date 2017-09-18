@@ -24,7 +24,7 @@ exports.exactly = function (number) {
     "fix": function () {
       if(document.getElementById("audioplayer").className === "hide"){
         show("audioplayer");
-      }else{hide("audioplayer");}
+      }else{hide("audioplayer");hide("volumeBar");}
     }
   }
   execute[number]();

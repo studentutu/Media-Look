@@ -46,7 +46,7 @@ body{
 
 #sidenav {
     height: 100%;
-    width: 8%;
+    width: 12%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -73,7 +73,7 @@ body{
 }
 
 .content {
-    margin-left: 8%;
+    margin-left: 12%;
 		margin-top: 35px;
 }
 

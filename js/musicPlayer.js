@@ -60,6 +60,19 @@ exports.myPlayer = function () {
 
                     bton = document.createElement('button');
                     bton.setAttribute("id","volumeBTN");
+                    let inpVolume = document.createElement('input');
+                        inpVolume.setAttribute("id","volumeBar");
+                        inpVolume.setAttribute("type","range");
+                        inpVolume.setAttribute("value","0.5");
+                        inpVolume.setAttribute("min","0");
+                        inpVolume.setAttribute("max","1");
+                        inpVolume.setAttribute("step","0.01");
+                    document.body.appendChild(inpVolume);
+                        inpVolume.setAttribute("display","none");
+                    //invisibleButNeeded.appendChild(inpVolume);
+                        $(inpVolume).hide();
+
+                    //bton.appendChild(inpVolume);
                     invisibleButNeeded.appendChild(bton);
 
                 audioplayerDiv.appendChild(invisibleButNeeded);
@@ -179,4 +192,28 @@ exports.myPlayer = function () {
         function getPosition(el) {
             return el.getBoundingClientRect().left;
         }
+
+        var volumeBTN = document.getElementById('volumeBTN');
+        var volumeBar = document.getElementById('volumeBar');
+        //  console.log(volumeBar.style.height); not visible property
+
+            /** bottom: 0;
+                right: 0;
+                width: 300px;
+                */
+            $(volumeBTN).click(function () {
+
+              if(volumeBar.style.display === "none"){
+                  let xy = $(volumeBTN).offset();
+                  volumeBar.style.left = (xy.left + ($(volumeBTN).width()/ 2)) + "px";
+                  volumeBar.style.top = (xy.top - 100) + "px";
+                  $(volumeBar).show();
+                  //music.volume = volumeBar.value;
+
+                } else {
+                  $(volumeBar).hide();
+                }
+              }
+            );
+
 };
