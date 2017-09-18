@@ -10,12 +10,12 @@ var musicGalerie = require('./js/music.js');
 // functions must be named in order to be used!
 
 $(document).ready(function() {
-
+    //$('div').hide();
     sideBar.createMenuFrom();
     webWikipedia.createFrameAndWiki();// can't use webcontent due to it's mailfunction
     literature.createLiteratureDiv();
     musicGalerie.musicForm();
-
+    $('#literature').show("slow");
     //$(function () {
         $('.navigation').click(function(){
           view.exactly($(this).attr('id'));

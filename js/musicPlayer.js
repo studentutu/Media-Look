@@ -69,7 +69,7 @@ exports.myPlayer = function () {
                         //inpVolume.style.background = "#3071a9";
 
                         inpVolume.setAttribute("type","range");
-                        //inpVolume.setAttribute("value","0.5");
+                        //inpVolume.defaultValue = 0.5;
                         inpVolume.setAttribute("min","0");
                         inpVolume.setAttribute("max","1");
                         inpVolume.setAttribute("step","0.01");
