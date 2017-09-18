@@ -62,13 +62,20 @@ exports.myPlayer = function () {
                     bton.setAttribute("id","volumeBTN");
                     let inpVolume = document.createElement('input');
                         inpVolume.setAttribute("id","volumeBar");
+                        inpVolume.style.width = "100px";
+                        inpVolume.style.height = "8px";
+                        inpVolume.style.zIndex = "5";
+
+                        //inpVolume.style.background = "#3071a9";
+
                         inpVolume.setAttribute("type","range");
-                        inpVolume.setAttribute("value","0.5");
+                        //inpVolume.setAttribute("value","0.5");
                         inpVolume.setAttribute("min","0");
                         inpVolume.setAttribute("max","1");
                         inpVolume.setAttribute("step","0.01");
+                      //inpVolume.setAttribute("orient","vertical");
                     document.body.appendChild(inpVolume);
-                        inpVolume.setAttribute("display","none");
+                    //inpVolume.setAttribute("display","none");
                     //invisibleButNeeded.appendChild(inpVolume);
                         $(inpVolume).hide();
 
@@ -196,7 +203,7 @@ exports.myPlayer = function () {
         var volumeBTN = document.getElementById('volumeBTN');
         var volumeBar = document.getElementById('volumeBar');
         //  console.log(volumeBar.style.height); not visible property
-
+            volumeBar.defaultValue = 0.5;
             /** bottom: 0;
                 right: 0;
                 width: 300px;
@@ -204,11 +211,23 @@ exports.myPlayer = function () {
             $(volumeBTN).click(function () {
 
               if(volumeBar.style.display === "none"){
+
                   let xy = $(volumeBTN).offset();
-                  volumeBar.style.left = (xy.left + ($(volumeBTN).width()/ 2)) + "px";
-                  volumeBar.style.top = (xy.top - 100) + "px";
+                  //transformed but not changed!!!!
+                  //$(volumeBar).offset({ top:(xy.top), left:(xy.left)});
+                  volumeBar.style.left  = (xy.left  - 50+ ($(volumeBTN).width()/ 2)) + "px";
+                  volumeBar.style.top = (xy.top -55) + "px";
+
+
+                  $(window).resize(function () {
+                      let xy = $(volumeBTN).offset()
+                      volumeBar.style.left = (xy.left - 50+ ($(volumeBTN).width()/ 2)) + "px";
+                      volumeBar.style.top = (xy.top -55) + "px";
+                  });
                   $(volumeBar).show();
-                  //music.volume = volumeBar.value;
+                  $(volumeBar).mousemove(function () {
+                    music.volume = volumeBar.value;
+                  });
 
                 } else {
                   $(volumeBar).hide();
