@@ -1,6 +1,6 @@
 
 #audioplayer{
-    width: 80%;
+    width: 70%;
     height: 40px;
     margin: auto;
     margin-bottom: 7px;
@@ -18,11 +18,10 @@
     height:30px;
     width: 5%;
     border: none;
-    margin-left: 5px;
     margin-right: 5px;
     margin-top: 5px;
     opacity: 0.5;
-    background-size: 30px 30px;
+    background-size: 25px 25px;
     background-repeat: no-repeat;
     background-position: center;
     display: inline-block;
@@ -36,7 +35,7 @@
   border: none;
   margin-top: 5px;
   opacity: 0.5;
-  background-size: 30px 30px;
+  background-size: 20px 20px;
   background-repeat: no-repeat;
   background-position: center;
   display: inline-block;
@@ -51,7 +50,21 @@
   border: none;
   margin-top: 5px;
   opacity: 0.5;
-  background-size: 30px 30px;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  outline:none;
+  transition: 0.2s ease-out;
+}
+#volumeBTN {
+  background: url('volumeBTN.png');
+  height:30px;
+  width: 5%;
+  border: none;
+  margin-top: 5px;
+  opacity: 0.5;
+  background-size: 20px 20px;
   background-repeat: no-repeat;
   background-position: center;
   display: inline-block;
@@ -60,7 +73,7 @@
 }
 
 
-#nextButton:hover,#prevButton:hover,#pButton:hover{
+#nextButton:hover,#prevButton:hover,#pButton:hover, #volumeBTN:hover{
   opacity:1;
 }
 
@@ -68,7 +81,7 @@
 .pause{background:url('stopBTN.png'); transition: 0.2s ease-out;}
 
 #timeline{
-    width: 83%;
+    width: 78%;
     height: 20px;
     display: inline-block;
     border-radius: 15px;

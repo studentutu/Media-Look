@@ -58,6 +58,10 @@ exports.myPlayer = function () {
                     bton.setAttribute("id","nextButton");
                     invisibleButNeeded.appendChild(bton);
 
+                    bton = document.createElement('button');
+                    bton.setAttribute("id","volumeBTN");
+                    invisibleButNeeded.appendChild(bton);
+
                 audioplayerDiv.appendChild(invisibleButNeeded);
 
 
@@ -70,7 +74,13 @@ exports.myPlayer = function () {
         var timeline = document.getElementById('timeline'); // timeline
 
         // timeline width adjusted for playhead
-        var timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
+        //Bug-fix -- TO DO0
+        $( window ).resize(function() {
+          timeUpdate();
+        });
+
+        //var  timelineWidth = $(timeline).width();//timeline.getBoundingClientRect.left - timeline.getBoundingClientRect.right;
+        //var timelineWidth = timeline.getBoundingClientRect.left - timeline.getBoundingClientRect.right;
         //Bug-fix
         document.getElementById('audioplayer').setAttribute('class',"hide");
         // play button event listenter
@@ -82,12 +92,12 @@ exports.myPlayer = function () {
         // makes timeline clickable
         timeline.addEventListener("click", function(event) {
             moveplayhead(event);
-            music.currentTime = duration * clickPercent(event);
+            music.currentTime = duration * clickPercent(event);// (x * 0.50) gives double number
         }, false);
 
         // returns click as decimal (.77) % of the total timelineWidth
         function clickPercent(event) {
-            return (event.clientX - getPosition(timeline)) / timelineWidth;
+            return (event.clientX - getPosition(timeline)) / ($(timeline).width() -18); //  / timelineWidth pointX -
         }
 
         // makes playhead draggable
@@ -121,21 +131,21 @@ exports.myPlayer = function () {
         function moveplayhead(event) {
             var newMargLeft = event.clientX - getPosition(timeline);
 
-            if (newMargLeft >= 0 && newMargLeft <= timelineWidth) {
+            if (newMargLeft >= 0 && newMargLeft <= ($(timeline).width() -18) ) { // <= timelineWidth
                 playhead.style.marginLeft = newMargLeft + "px";
             }
             if (newMargLeft < 0) {
                 playhead.style.marginLeft = "0px";
             }
-            if (newMargLeft > timelineWidth) {
-                playhead.style.marginLeft = timelineWidth + "px";
+            if (newMargLeft > ($(timeline).width() -18) ) { // > timelineWidth
+                playhead.style.marginLeft = ($(timeline).width() -18) + "px"; // = timelineWidth
             }
         }
 
         // timeUpdate
         // Synchronizes playhead position with current point in audio
         function timeUpdate() {
-            var playPercent = timelineWidth * (music.currentTime / duration);
+            var playPercent = ($(timeline).width() -18) * (music.currentTime / duration); // = timelineWidth
             playhead.style.marginLeft = playPercent + "px";
             if (music.currentTime == duration) {
                 pButton.className = "";
