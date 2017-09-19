@@ -3,6 +3,7 @@
 //            maybe add List of soursec
 exports.myPlayer = function () {
     // body...
+
         var sidenav = document.getElementById('sidenav');
         var audioDiv = document.createElement("div");
             audioDiv.setAttribute('id',"playerStuff");
@@ -16,7 +17,7 @@ exports.myPlayer = function () {
 
         //Will not be shown
         var src = document.createElement("source");
-            src.setAttribute('src',"media/GorillazCHORUSREMIX.mp4");
+            src.setAttribute('src',"./media/GorillazCHORUSREMIX.mp4");
             src.setAttribute('type',"audio/mpeg");
             track.appendChild(src);
 
@@ -234,5 +235,76 @@ exports.myPlayer = function () {
                 }
               }
             );
+          $('#nextButton').click(function () {
+          change_track_next();
+          });
+
+
+          function change_track_next() {
+
+            let tracksAll = ["./media/The-Jimi-Hendrix-Experience-The-Watchtower.mp3", "./media/breakbot.mp3","./media/piano.mp3","./media/GorillazCHORUSREMIX.mp4"];
+                let sour = $('source');
+                let nameOfS = $(sour).attr("src");
+                track.pause();
+
+                let cur;
+                for (let i =0; i<tracksAll.length; i++){
+                    if(nameOfS == tracksAll[i]){
+                      //console.log('Found' + i);
+                      cur = i;
+                    }
+                }
+                //console.log('Found ' + cur);
+                if ( (cur+1)===tracksAll.length){
+                    cur = 0;
+                } else {
+                    cur = cur+1;
+                }
+                //console.log("This one " + cur +" = " + tracksAll[cur]);
+                let newSrc = document.createElement("source");
+                    newSrc.setAttribute("type", "audio/mpeg");
+                    newSrc.setAttribute("src", tracksAll[cur]);
+                //if(next == null){next = track.childNodes[0];}
+                track.removeChild(track.childNodes[0]);
+                track.appendChild(newSrc);
+                track.load();
+                track.play();
+                /****************/
+          }
+
+          $("#prevButton").click(function () {
+            change_track_prev();
+          });
+          function change_track_prev() {
+
+            let tracksAll = ["./media/The-Jimi-Hendrix-Experience-The-Watchtower.mp3", "./media/breakbot.mp3","./media/piano.mp3","./media/GorillazCHORUSREMIX.mp4"];
+                let sour = $('source');
+                let nameOfS = $(sour).attr("src");
+                track.pause();
+
+                let cur;
+                for (let i =0; i<tracksAll.length; i++){
+                    if(nameOfS == tracksAll[i]){
+                      //console.log('Found' + i);
+                      cur = i;
+                    }
+                }
+                //console.log('Found ' + cur);
+                if ( (cur)===0){
+                    cur = tracksAll.length-1;
+                } else {
+                    cur = cur-1;
+                }
+                //console.log("This one " + cur +" = " + tracksAll[cur]);
+                let newSrc = document.createElement("source");
+                    newSrc.setAttribute("type", "audio/mpeg");
+                    newSrc.setAttribute("src", tracksAll[cur]);
+                //if(next == null){next = track.childNodes[0];}
+                track.removeChild(track.childNodes[0]);
+                track.appendChild(newSrc);
+                track.load();
+                track.play();
+                /****************/
+          }
 
 };
