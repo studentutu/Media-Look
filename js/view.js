@@ -22,10 +22,9 @@ exports.exactly = function (number) {
       show("musicDiv");
     },
     "fix": function () {
-      if(document.getElementById("audioplayer").className === "hide"){
-        
-        show("audioplayer");
-      }else{hide("audioplayer");hide("volumeBar");}
+      if (document.getElementById("audioplayer").className === "hide"){        
+          show("audioplayer");
+      } else {  hide("audioplayer");hide("volumeBar");}
     }
   }
   execute[number]();

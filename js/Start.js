@@ -6,7 +6,7 @@ var webWikipedia = require('./js/webWikipedia.js');
 var sideBar = require('./js/sidenav.js');
 var sidePlayer = require('./js/musicPlayer.js');
 var musicGalerie = require('./js/music.js');
-// used strict mode
+// use strict?
 // functions must be named in order to be used!
 
 
@@ -54,9 +54,6 @@ musicGalerie.musicForm();
 
 
 //document.getElementsByTagName('body')[0].style.visibility = "visible";
-var goMP = function () {
-  sidePlayer.myPlayer();
-};
 
 $('.navigation').click(function(){
   view.exactly($(this).attr('id'));
@@ -65,3 +62,9 @@ $('.navigation').click(function(){
 $(document).ready(function() {
   $(document.body).show("slow",goMP);
 });
+
+var goMP = function () {
+  sidePlayer.myPlayer();
+
+  // here Post can be made!
+};
