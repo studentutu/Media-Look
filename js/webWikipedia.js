@@ -9,13 +9,14 @@ exports.createFrameAndWiki = function () {
       webWikipedia.style.margin = "auto";
   let title = document.createElement('p');
       title.setAttribute('class','title');
+      title.setAttribute("display","block");
       title.innerHTML = " Wikipedia ";
       webWikipedia.appendChild(title);
 
   let iframeInside = document.createElement("iframe");
       iframeInside.setAttribute("src","https://en.wikipedia.org/wiki/User_story");
       iframeInside.setAttribute("width","100%");
-      iframeInside.setAttribute("height","100%");
+      iframeInside.setAttribute("height","90%");
 
       webWikipedia.appendChild(iframeInside);
 };

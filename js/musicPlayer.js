@@ -225,13 +225,13 @@ exports.myPlayer = function () {
                       volumeBar.style.left = (xy.left - 50+ ($(volumeBTN).width()/ 2)) + "px";
                       volumeBar.style.top = (xy.top -55) + "px";
                   });
-                  $(volumeBar).show();
+                  $(volumeBar).show(300);
                   $(volumeBar).mousemove(function () {
                     music.volume = volumeBar.value;
                   });
 
                 } else {
-                  $(volumeBar).hide();
+                  $(volumeBar).hide(300);
                 }
               }
             );
