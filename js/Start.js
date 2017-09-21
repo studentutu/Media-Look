@@ -6,6 +6,7 @@ var webWikipedia = require('./js/webWikipedia.js');
 var sideBar = require('./js/sidenav.js');
 var sidePlayer = require('./js/musicPlayer.js');
 var musicGalerie = require('./js/music.js');
+const path = require('path');
 // use strict?
 // functions must be named in order to be used!
 
@@ -47,10 +48,10 @@ document.getElementById('footer').appendChild(docMy);
 
 
 
-sideBar.createMenuFrom();
-webWikipedia.createFrameAndWiki();// can't use webcontent due to it's mailfunction
-literature.createLiteratureDiv();
-musicGalerie.musicForm();
+sideBar.createMenuFrom(); // don't need path
+webWikipedia.createFrameAndWiki();// can't use webcontent due to it's mailfunction // don't need path
+literature.createLiteratureDiv();// don't need path
+
 
 
 //document.getElementsByTagName('body')[0].style.visibility = "visible";
@@ -63,8 +64,15 @@ $(document).ready(function() {
   $(document.body).show("slow",goMP);
 });
 
+//path.join(__dirname, 'index.html')
+//sedePlayer.loadNewSource();
 var goMP = function () {
   sidePlayer.myPlayer();
 
   // here Post can be made!
+  // do need actual path
+  let pth = path.join(__dirname,"/");// means ./Media-Look/
+  //console.log(pth);
+  musicGalerie.musicForm(pth);
+  
 };

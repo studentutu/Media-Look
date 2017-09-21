@@ -9,7 +9,8 @@ exports.createMenuFrom = function () {
     createLiForMe("Literature","1");
     createLiForMe("Galerie","2");
     createLiForMe("Music","3");
-    createLiForMe("Togle", "fix");
+
+    //createLiForMe("Togle", "fix");
 
 
     function createLiForMe(textToLi, id) {
@@ -19,5 +20,12 @@ exports.createMenuFrom = function () {
             li.setAttribute("id",id);
         ulForMenu.appendChild(li);
     }
-
+    let togl = document.createElement('div');
+        togl.setAttribute("class","navigation");
+        togl.innerHTML = "<h3>Toggle</h3>";
+        togl.style.position = "fixed";
+        togl.style.bottom = "14px";
+        togl.style.textAlign = "center";
+        togl.setAttribute("id","fix");
+    document.body.appendChild(togl);
 };

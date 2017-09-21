@@ -2,7 +2,7 @@
 //        add next,
 //            maybe add List of soursec
 
-var tracksAll = ["./media/The-Jimi-Hendrix-Experience-The-Watchtower.mp3","./media/GorillazCHORUSREMIX.mp4"];
+var tracksAll = ["./media/GorillazCHORUSREMIX.mp4"];
 
 exports.myPlayer = function () {
     // body...
@@ -96,7 +96,7 @@ exports.myPlayer = function () {
 
     };
 
-    var music = document.getElementById('music'); // id for audio element
+        var music = document.getElementById('music'); // id for audio element
         var duration = music.duration; // Duration of audio clip, calculated here for embedding purposes
         var pButton = document.getElementById('pButton'); // play button
         var playhead = document.getElementById('playhead'); // playhead
@@ -141,7 +141,7 @@ exports.myPlayer = function () {
         // mouseDown EventListener
         function mouseDown() {
             onplayhead = true;
-            window.addEventListener('mousemove', moveplayhead, true);
+            window.addEventListener('mousemove', moveplayhead, true);// stop you from using window
             music.removeEventListener('timeupdate', timeUpdate, false);
         }
 
@@ -231,12 +231,12 @@ exports.myPlayer = function () {
 
 };
 
-exports.loadAndPlayNewSource = function loadThisSource(src) {
+exports.loadNewSource = function (src) {
   let track = document.getElementById('music');
   //let tracksAll = ["./media/The-Jimi-Hendrix-Experience-The-Watchtower.mp3", "./media/breakbot.mp3","./media/piano.mp3","./media/GorillazCHORUSREMIX.mp4"];
-
-      let nameOfS = src;
       track.pause();
+      let nameOfS = src;
+      //track.pause();
 
       let cur=-1;
       for (let i =0; i<tracksAll.length; i++){
@@ -246,16 +246,16 @@ exports.loadAndPlayNewSource = function loadThisSource(src) {
           }
       }
       //console.log('Found ' + cur);
-      if(cur >=0 ){ nameOfS = tracksAll[cur];}else { tracksAll.push(nameOfS); }
-
+      if(cur <0 ){ tracksAll.push(nameOfS); }
       let newSrc = document.createElement("source");
           newSrc.setAttribute("type", "audio/mpeg");
           newSrc.setAttribute("src", nameOfS);
-
+      //if(next == null){next = track.childNodes[0];}
       track.removeChild(track.childNodes[0]);
       track.appendChild(newSrc);
       track.load();
       track.play();
+      /****************/
       /****************/
 }
 
@@ -277,13 +277,13 @@ var change_Volume = function () {
           volumeBar.style.left = (xy.left - 50+ ($(volumeBTN).width()/ 2)) + "px";
           volumeBar.style.top = (xy.top -55) + "px";
       });
-      $(volumeBar).show(300);
+      $(volumeBar).show(200);
       $(volumeBar).mousemove(function () {
         music.volume = volumeBar.value;
       });
 
     } else {
-      $(volumeBar).hide(300);
+      $(volumeBar).hide(200);
     }
   }
 
