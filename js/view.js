@@ -1,4 +1,4 @@
-exports.exactly = function (number) {
+exports.exactly = function (number) { // 0 wiki, 1 literature, 2 Galerie, fix audioplayer
 
    var execute = {
     "0": function () {
@@ -12,9 +12,9 @@ exports.exactly = function (number) {
       hide("musicDiv");
     },
     "2": function () {
-      show("webWikipedia");
+      hide("webWikipedia");
       show("literature");
-      hide("musicDiv");
+      show("musicDiv");
     },
     "3": function () {
       hide("webWikipedia");
@@ -22,9 +22,15 @@ exports.exactly = function (number) {
       show("musicDiv");
     },
     "fix": function () {
-      if (document.getElementById("audioplayer").className === "hide"){        
+      if (document.getElementById("audioplayer").className === "hide"){
           show("audioplayer");
       } else {  hide("audioplayer");hide("volumeBar");}
+    },
+    "homeBTN": function () {
+           show("footer");
+           hide("webWikipedia");
+           hide("literature");
+           hide("musicDiv");
     }
   }
   execute[number]();

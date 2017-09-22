@@ -236,7 +236,7 @@ exports.loadNewSource = function (src) {
   //let tracksAll = ["./media/The-Jimi-Hendrix-Experience-The-Watchtower.mp3", "./media/breakbot.mp3","./media/piano.mp3","./media/GorillazCHORUSREMIX.mp4"];
       track.pause();
       let nameOfS = src;
-      //track.pause();
+
 
       let cur=-1;
       for (let i =0; i<tracksAll.length; i++){
@@ -255,6 +255,9 @@ exports.loadNewSource = function (src) {
       track.appendChild(newSrc);
       track.load();
       track.play();
+      // remove play, add pause
+          pButton.className = "";
+          pButton.className = "pause";
       /****************/
       /****************/
 }
@@ -277,13 +280,15 @@ var change_Volume = function () {
           volumeBar.style.left = (xy.left - 50+ ($(volumeBTN).width()/ 2)) + "px";
           volumeBar.style.top = (xy.top -55) + "px";
       });
-      $(volumeBar).show(200);
+
+      $(volumeBar).slideToggle("slow");
+
       $(volumeBar).mousemove(function () {
         music.volume = volumeBar.value;
       });
 
     } else {
-      $(volumeBar).hide(200);
+      $(volumeBar).slideToggle("slow");
     }
   }
 

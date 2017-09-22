@@ -14,9 +14,9 @@ exports.createFrameAndWiki = function () {
       webWikipedia.appendChild(title);
 
   let iframeInside = document.createElement("iframe");
-      iframeInside.setAttribute("src","https://en.wikipedia.org/wiki/User_story");
       iframeInside.setAttribute("width","100%");
       iframeInside.setAttribute("height","90%");
+      iframeInside.setAttribute("src","https://en.wikipedia.org/wiki/User_story");
 
       webWikipedia.appendChild(iframeInside);
 };

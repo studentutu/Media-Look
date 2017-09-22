@@ -80,18 +80,35 @@ function musicPost( miniPost,src,imgsrc, miniTitle,text) {
             //divWhole.appendChild(sourcPth);
         miniPost.onclick  = function (){
           if(this.className =="MiNIVis"){
-              this.childNodes[0].childNodes[0].style.display = "block";// display back
-              this.childNodes[0].style.display = "block";  // display whole with text
-              this.childNodes[0].childNodes[1].style.display = "block";  // display wholeIMG with WHOLEtext
+              //this.childNodes[0].childNodes[0].style.display = "block";// display back
+              //this.childNodes[0].style.display = "block";  // display whole with text
+              //this.childNodes[0].childNodes[1].style.display = "block";  // display wholeIMG with WHOLEtext
               this.setAttribute("class","miniInvis");
               //console.log("Fired Once");
+
+              //this.childNodes[0].childNodes[1].setAttribute("id",sourc);
+              //this.childNodes[0].onclick = function () {
               let sourc = this.childNodes[0].childNodes[1].id;
-              sidePlayer.loadNewSource(sourc);
+
+                if(sourc ==$('source').attr("src")){
+                  document.getElementById('pButton').click();
+                } else {
+                  sidePlayer.loadNewSource(sourc);
+                }
+
             } else{
-              this.childNodes[0].childNodes[0].style.display = "none";// display back
-              this.childNodes[0].style.display = "none";  // display whole with text
-              this.childNodes[0].childNodes[1].style.display = "none";  // display wholeIMG with WHOLEtext
+              //this.childNodes[0].childNodes[0].style.display = "none";// display back
+              //this.childNodes[0].style.display = "none";  // display whole with text
+              //this.childNodes[0].childNodes[1].style.display = "none";  // display wholeIMG with WHOLEtext
               this.setAttribute("class","MiNIVis");
+              let sourc = this.childNodes[0].childNodes[1].id;
+
+                if(sourc ==$('source').attr("src")){
+                  document.getElementById('pButton').click();
+                } else {
+                  sidePlayer.loadNewSource(sourc);
+                }
+                  
             }
 
           };
