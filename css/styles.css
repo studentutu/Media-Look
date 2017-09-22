@@ -136,7 +136,8 @@ body{
 		display:block;
 }
 
-/*Play */
+/*Change for img/Video */
+/* back is a child to IMGDIV/ musicDiv / videoDIV */
 .backOfWholePost {
 	position: fixed;
 	top:10%;
@@ -145,13 +146,12 @@ body{
  	width: 67%;
 	height: 80%;
 	z-index: 30;
-
-
+	overflow: hidden;
 }
 .wholePost {
 	position: fixed;
   z-index: 35;
-
+	overflow: visible;
 }
 .WholeImg {
 	top: 25%;
@@ -159,7 +159,6 @@ body{
 	height: 90%;
 	margin: auto;
 	z-index: 40;
-
 }
 .wholeText {
 	width: 100%;
@@ -167,5 +166,4 @@ body{
 	z-index: 40;
 	color: white;
 		text-align: center;
-
 }

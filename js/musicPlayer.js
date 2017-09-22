@@ -221,7 +221,7 @@ exports.myPlayer = function () {
                 */
           $(volumeBTN).click(change_Volume);
           $('#nextButton').click(function () {
-          change_track_next();
+            change_track_next();
           });
 
 
@@ -255,10 +255,10 @@ exports.loadNewSource = function (src) {
       track.appendChild(newSrc);
       track.load();
       track.play();
+
       // remove play, add pause
           pButton.className = "";
           pButton.className = "pause";
-      /****************/
       /****************/
 }
 
@@ -323,6 +323,10 @@ function change_track_next() {
       track.load();
       track.play();
       /****************/
+      // remove play, add pause
+          pButton.className = "";
+          pButton.className = "pause";
+      /****************/
 }
 
 
@@ -356,5 +360,9 @@ function change_track_prev() {
       track.appendChild(newSrc);
       track.load();
       track.play();
+      /****************/
+      // remove play, add pause
+          pButton.className = "";
+          pButton.className = "pause";
       /****************/
 }
