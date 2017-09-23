@@ -6,6 +6,7 @@ var webWikipedia = require('./js/webWikipedia.js');
 var sideBar = require('./js/sidenav.js');
 var sidePlayer = require('./js/musicPlayer.js');
 var musicGalerie = require('./js/music.js');
+var mod3D = require('./js/models.js');
 var path = require('path');
 // use strict?
 
@@ -56,8 +57,6 @@ var path = require('path');
       document.getElementById('footer').appendChild(docMy);
 
 
-
-
       sideBar.createMenuFrom(); // don't need path
       literature.createLiteratureDiv();// don't need path
 
@@ -88,6 +87,7 @@ var goMP = function () {
   let afterEv = function () {
     musicGalerie.musicForm(pth);
     webWikipedia.createFrameAndWiki();
+    mod3D.allImgAndPosts(pth);
   }
   setTimeout(afterEv,700);
 

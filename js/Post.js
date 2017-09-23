@@ -4,41 +4,33 @@
 //           div  + click (hide whole);  Padding 25%  margin auto;
 //                  .wholePost zIndex = 20;
 var sidePlayer = require('./musicPlayer.js');
+var whole = document.createElement("div");
+    whole.setAttribute("class","wholePost");
+    whole.style.display= "none";
+
+var back = document.createElement("div");
+    back.setAttribute("class","backOfWhole");
+    back.style.display = "none";
+
+    //control by id!
+    document.body.appendChild(whole);
+    document.body.appendChild(back);
+var listOfPosts = [];
+var listOfTexts = [];
+var iterPost =0;
+//console.log("Hey  Up Here");
+
  exports.createPost = function (parent, kind, src,imgsrc,title, text) { // 0 img, 1 music , 2 video,3 DDDmodel
 
   // global div show();
        let miniPost = document.createElement("div");
-           //miniPost.setAttribute("class","MiNIVis");
-           miniPost.className = "MiNIVis";
-           //
-           /*
-       let whole = document.createElement("div");
-           whole.setAttribute("class","wholePost");
-           whole.style.display= "none";
-           //position: absolute;
-           //top  -
-           //left -
-       let back = document.createElement("div");
-           back.setAttribute("class","backOfWholePost");
-           back.style.display = "none";
-
-
-           // somewhere
-           //$(".backOfWholePost").click(function (){
-           //       $(this).Parent.hide("slow",$(this).hide()); // hide wholePost, then immediatly hide back;
-           //
-           //
-           //});
-           whole.appendChild(back);
-           miniPost.appendChild(whole);
-           */
+           miniPost.className = "MiNIVis"; // need this!
            parent.appendChild(miniPost);
 
    if( kind === 0){
-      //  miniPostimgPost();
+       imgPost(miniPost,imgsrc,title,text);
    }
    if( kind === 1){
-       miniPost.setAttribute("class", "miniPost audioPost");
        musicPost(miniPost, src, imgsrc,title,text);
    }
    if (kind ===2 ){
@@ -48,9 +40,6 @@ var sidePlayer = require('./musicPlayer.js');
 
  }
 
-function showPostThis() {
-
-}
 function musicPost( miniPost,src,imgsrc, miniTitle,text) {
         let divImg = document.createElement('img');
             divImg.setAttribute("src",imgsrc);
@@ -60,62 +49,62 @@ function musicPost( miniPost,src,imgsrc, miniTitle,text) {
             tit.setAttribute("class","miniTitle");
             tit.innerHTML = miniTitle;
         miniPost.appendChild(tit);
-        miniPost.className = "MiNIVis"; // need this!
         miniPost.setAttribute("id",src);
 
-        //Whole
-        /*
-        let divWhole =  document.createElement('img');
-            divWhole.setAttribute("src",imgsrc);
-            divWhole.setAttribute("class","WholeImg");
-          //  divWhole.setAttribute("id",src);
-        miniPost.childNodes[0].appendChild(divWhole);// -[ 1]
-            tit = document.createElement('p');
-            tit.setAttribute("class","wholeText");
-            tit.innerHTML = text;
-        miniPost.childNodes[0].appendChild(tit);
-            divWhole.setAttribute("id",src);
-            */
-
-            //let sourcPth = document.createElement("source");
-            //console.log(src);
-            //sourcPth.setAttribute("src",src);
-            //sourcPth.setAttribute("type", "audio/mpeg");
-            //divWhole.appendChild(sourcPth);
         miniPost.onclick  = function (){
-          //if(this.className =="MiNIVis"){
-              //this.childNodes[0].childNodes[0].style.display = "block";// display back
-              //this.childNodes[0].style.display = "block";  // display whole with text
-              //this.childNodes[0].childNodes[1].style.display = "block";  // display wholeIMG with WHOLEtext
-            //  this.setAttribute("class","miniInvis");
-              //console.log("Fired Once");
-
-              //this.childNodes[0].childNodes[1].setAttribute("id",sourc);
-              //this.childNodes[0].onclick = function () {
-              //let sourc = this.childNodes[0].childNodes[1].id;
               let sourc = this.id;
                 if(sourc ==$('source').attr("src")){
                   document.getElementById('pButton').click();
                 } else {
                   sidePlayer.loadNewSource(sourc);
                 }
-
-              //this.childNodes[0].childNodes[0].style.display = "none";// display back
-              //this.childNodes[0].style.display = "none";  // display whole with text
-              //this.childNodes[0].childNodes[1].style.display = "none";  // display wholeIMG with WHOLEtext
-              //this.setAttribute("class","MiNIVis");
-
           };
-
-
 }
 
-function imgPost() {
+function imgPost( miniPost,imgsrc, miniTitle,text) {
+  let minImg = document.createElement('img');
+      minImg.setAttribute("class","miniImg");
+      minImg.setAttribute("src",imgsrc);
+  miniPost.appendChild(minImg);// 0
+      minImg.zIndex = 100 + iterPost;
+      iterPost++;
+
+  let tit = document.createElement("p");
+      tit.setAttribute("class","miniTitle");
+      tit.innerHTML = miniTitle;
+  miniPost.appendChild(tit);//1
+
+  let smth = document.createElement("div");
+      smth.setAttribute("class","DivWhole");
+
+      minImg =  document.createElement('img');
+      minImg.setAttribute("src",imgsrc);
+      minImg.setAttribute("class","WholeImg");
+
+      tit = document.createElement('p');
+      tit.setAttribute("class","wholeText");
+      tit.innerHTML = text;
+      smth.appendChild(minImg);
+      smth.appendChild(tit);
+      listOfPosts.push(smth);
+
+    miniPost.onclick = function () {
+      let DivWhole = listOfPosts[(this.childNodes[0].zIndex) - 100];
+
+          whole.appendChild(DivWhole);
+          $(back).show("fast");
+          $(whole).show("slow");
+    }
+    back.onclick = function () {
+       whole.removeChild(whole.childNodes[0]);
+       $(whole).hide("fast");
+       $(back).hide("slow");
+    }
 
 }
-function videoPost() {
+function videoPost( miniPost,src,imgsrc, miniTitle,text) {
 
 }
-function DDDmodelPost() {
+function DDDmodelPost( miniPost,src,imgsrc, miniTitle,text) {
 
 }

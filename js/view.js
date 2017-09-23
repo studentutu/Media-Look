@@ -5,21 +5,31 @@ exports.exactly = function (number) { // 0 wiki, 1 literature, 2 Galerie, fix au
       show("webWikipedia");
       hide("literature");
       hide("musicDiv");
+      hide("models");
     },
     "1": function () {
       hide("webWikipedia");
       show("literature");
       hide("musicDiv");
+      hide("models");
     },
     "2": function () {
       hide("webWikipedia");
       show("literature");
       show("musicDiv");
+      hide("models");
     },
     "3": function () {
       hide("webWikipedia");
       hide("literature");
       show("musicDiv");
+      hide("models");
+    },
+    "4": function () {
+      hide("webWikipedia");
+      hide("literature");
+      hide("musicDiv");
+      show("models");
     },
     "fix": function () {
       if (document.getElementById("audioplayer").className === "hide"){
@@ -31,38 +41,10 @@ exports.exactly = function (number) { // 0 wiki, 1 literature, 2 Galerie, fix au
            hide("webWikipedia");
            hide("literature");
            hide("musicDiv");
+           hide("models");
     }
   }
   execute[number]();
-
-/*
-        switch (number) {
-          case "0":
-          show("webWikipedia");
-          hide("literature");
-          hide("musicDiv");
-          break;
-          case "1":
-          hide("webWikipedia");
-          show("literature");
-          hide("musicDiv");
-          break;
-          case "2":
-          show("webWikipedia");
-          show("literature");
-          hide("musicDiv");
-          break;
-          case "3":
-          hide("webWikipedia");
-          hide("literature");
-          show("musicDiv");
-          break;
-          case "fix":
-                if(document.getElementById("audioplayer").className === "hide"){show("audioplayer");}else{hide("audioplayer");}
-          break;
-
-        }
-        */
 
         function hide(id) {
                 //jquery

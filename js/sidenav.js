@@ -10,6 +10,7 @@ exports.createMenuFrom = function () {
     createLiForMe("Literature","1");
     createLiForMe("Galerie","2");
     createLiForMe("Music","3");
+    createLiForMe("Images","4");
 
     //createLiForMe("Togle", "fix");
 

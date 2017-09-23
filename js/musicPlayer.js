@@ -118,7 +118,7 @@ exports.myPlayer = function () {
         pButton.addEventListener("click", play);
 
         // timeupdate event listener
-        music.addEventListener("timeupdate", timeUpdate, false);
+        music.addEventListener("timeupdate", timeUpdate, false);// low Priority
 
         // makes timeline clickable
         timeline.addEventListener("click", function(event) {
@@ -150,25 +150,25 @@ exports.myPlayer = function () {
         function mouseUp(event) {
             if (onplayhead === true) {
                 moveplayhead(event);
-                window.removeEventListener('mousemove', moveplayhead, true);
+                window.removeEventListener('mousemove', moveplayhead, true);//High priority
                 // change current time
                 music.currentTime = duration * clickPercent(event);
-                music.addEventListener('timeupdate', timeUpdate, false);
+                music.addEventListener('timeupdate', timeUpdate, false); //lowerPriority
             }
             onplayhead = false;
         }
         // mousemove EventListener
         // Moves playhead as user drags
         function moveplayhead(event) {
-            var newMargLeft = event.clientX - getPosition(timeline);
+            var newMargLeft = event.clientX - getPosition(timeline);// absolutX - div Start X
 
             if (newMargLeft >= 0 && newMargLeft <= ($(timeline).width() -18) ) { // <= timelineWidth
                 playhead.style.marginLeft = newMargLeft + "px";
             }
-            if (newMargLeft < 0) {
+            if (newMargLeft < 0) { // means start
                 playhead.style.marginLeft = "0px";
             }
-            if (newMargLeft > ($(timeline).width() -18) ) { // > timelineWidth
+            if (newMargLeft > ($(timeline).width() -18) ) { // > timelineWidth, means end
                 playhead.style.marginLeft = ($(timeline).width() -18) + "px"; // = timelineWidth
             }
         }
@@ -200,10 +200,10 @@ exports.myPlayer = function () {
             }
         }
 
-        // Gets audio file duration
+        // Gets audio file duration when buffered and checked!
         music.addEventListener("canplaythrough", function() {
             duration = music.duration;
-        }, false);
+        }, false); // lower priority
 
         // getPosition
         // Returns elements left position relative to top-left of viewport
@@ -236,8 +236,7 @@ exports.loadNewSource = function (src) {
   //let tracksAll = ["./media/The-Jimi-Hendrix-Experience-The-Watchtower.mp3", "./media/breakbot.mp3","./media/piano.mp3","./media/GorillazCHORUSREMIX.mp4"];
       track.pause();
       let nameOfS = src;
-
-
+      // check for repeat
       let cur=-1;
       for (let i =0; i<tracksAll.length; i++){
           if(nameOfS == tracksAll[i]){
@@ -245,12 +244,12 @@ exports.loadNewSource = function (src) {
             cur = i;
           }
       }
-      //console.log('Found ' + cur);
+
       if(cur <0 ){ tracksAll.push(nameOfS); }
       let newSrc = document.createElement("source");
           newSrc.setAttribute("type", "audio/mpeg");
           newSrc.setAttribute("src", nameOfS);
-      //if(next == null){next = track.childNodes[0];}
+
       track.removeChild(track.childNodes[0]);
       track.appendChild(newSrc);
       track.load();
