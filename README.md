@@ -9,7 +9,7 @@ I mean it could be a great product - stand alone application for creation and ma
  - add Json where app will keep his files (read files JSON, write ?)
  - Add video player
  - Add post's logic video/3Dmodel
- - Add emdbedded 3d Viwer
+ - Add WebGl 3d
  - Add img/text/3Dmodels/audio/video
 
  Optional :

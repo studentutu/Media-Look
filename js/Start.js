@@ -6,7 +6,8 @@ var webWikipedia = require('./js/webWikipedia.js');
 var sideBar = require('./js/sidenav.js');
 var sidePlayer = require('./js/musicPlayer.js');
 var musicGalerie = require('./js/music.js');
-var mod3D = require('./js/models.js');
+var divImagesPosts = require('./js/imageS.js');
+var divDDDmodels = require('./js/3DModels.js');
 var path = require('path');
 // use strict?
 
@@ -37,11 +38,17 @@ var path = require('path');
       docMy.setAttribute("class","hide");
       docMy.setAttribute("id","webWikipedia");
       document.getElementsByClassName('content')[0].appendChild(docMy);
-      // Essential 3dModels
+      // Essential Pictures
       docMy = document.createElement('div');
       docMy.setAttribute("class","hide");
       docMy.setAttribute("id","models");
       document.getElementsByClassName('content')[0].appendChild(docMy);
+      // Essential dModels
+      docMy = document.createElement('div');
+      docMy.setAttribute("class","hide");
+      docMy.setAttribute("id","DDDmodel");
+      document.getElementsByClassName('content')[0].appendChild(docMy);
+
       // Essential literature
       docMy = document.createElement('div');
       docMy.setAttribute("class","hide");
@@ -87,7 +94,8 @@ var goMP = function () {
   let afterEv = function () {
     musicGalerie.musicForm(pth);
     webWikipedia.createFrameAndWiki();
-    mod3D.allImgAndPosts(pth);
+    divImagesPosts.allImgAndPosts(pth);
+    divDDDmodels.allImgAndPosts(pth);
   }
   setTimeout(afterEv,700);
 

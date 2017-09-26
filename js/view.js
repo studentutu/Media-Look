@@ -6,30 +6,42 @@ exports.exactly = function (number) { // 0 wiki, 1 literature, 2 Galerie, fix au
       hide("literature");
       hide("musicDiv");
       hide("models");
+      hide("DDDmodel");
     },
     "1": function () {
       hide("webWikipedia");
       show("literature");
       hide("musicDiv");
       hide("models");
+      hide("DDDmodel");
     },
     "2": function () {
       hide("webWikipedia");
       show("literature");
       show("musicDiv");
       hide("models");
+      hide("DDDmodel");
     },
     "3": function () {
       hide("webWikipedia");
       hide("literature");
       show("musicDiv");
       hide("models");
+      hide("DDDmodel");
     },
     "4": function () {
       hide("webWikipedia");
       hide("literature");
       hide("musicDiv");
       show("models");
+      hide("DDDmodel");
+    },
+    "5": function () {
+      hide("webWikipedia");
+      hide("literature");
+      hide("musicDiv");
+      hide("models");
+      show("DDDmodel");
     },
     "fix": function () {
       if (document.getElementById("audioplayer").className === "hide"){
@@ -42,6 +54,7 @@ exports.exactly = function (number) { // 0 wiki, 1 literature, 2 Galerie, fix au
            hide("literature");
            hide("musicDiv");
            hide("models");
+           hide("DDDmodel");
     }
   }
   execute[number]();

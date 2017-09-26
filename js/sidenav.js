@@ -11,6 +11,8 @@ exports.createMenuFrom = function () {
     createLiForMe("Galerie","2");
     createLiForMe("Music","3");
     createLiForMe("Images","4");
+    createLiForMe("Models 3D","5");
+
 
     //createLiForMe("Togle", "fix");
 

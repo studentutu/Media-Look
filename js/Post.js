@@ -3,6 +3,7 @@
 // on click :
 //           div  + click (hide whole);  Padding 25%  margin auto;
 //                  .wholePost zIndex = 20;
+
 var sidePlayer = require('./musicPlayer.js');
 var whole = document.createElement("div");
     whole.setAttribute("class","wholePost");
@@ -20,9 +21,11 @@ var listOfTexts = [];
 var iterPost =0;
 //console.log("Hey  Up Here");
 
+
  exports.createPost = function (parent, kind, src,imgsrc,title, text) { // 0 img, 1 music , 2 video,3 DDDmodel
 
   // global div show();
+  // parent is different for Music / Audio/ Models/Image
        let miniPost = document.createElement("div");
            miniPost.className = "MiNIVis"; // need this!
            parent.appendChild(miniPost);
@@ -35,6 +38,11 @@ var iterPost =0;
    }
    if (kind ===2 ){
       // miniPostVideo
+   }
+   if (kind ===3 ){
+      // DDDmodelPost
+
+      DDDmodelPost(miniPost, src, imgsrc, title, text);
    }
 
 
@@ -106,5 +114,35 @@ function videoPost( miniPost,src,imgsrc, miniTitle,text) {
 
 }
 function DDDmodelPost( miniPost,src,imgsrc, miniTitle,text) {
+  let minImg = document.createElement('img');
+      minImg.setAttribute("class","miniImg");
+      minImg.setAttribute("src",imgsrc);
+  miniPost.appendChild(minImg);// 0
+
+  let tit = document.createElement("p");
+      tit.setAttribute("class","miniTitle");
+      tit.innerHTML = miniTitle;
+  miniPost.appendChild(tit);//1
+
+  //without a source for a while
+  //without a text for a while.
+  // withoit logic for a  while
+
+
+  miniPost.onclick = function () {
+
+      	 if(miniPost.className == "MiNIVis"){
+
+          //let cnv = document.getElementById('canvs');
+          //    cnv.className = "visible";
+      			  miniPost.className = "cnvActive";
+      	     } else {
+
+           //let cnv = document.getElementById('canvs');
+           //  cnv.className = "hide";
+      		 	miniPost.className ="MiNIVis";
+      		}
+};
+
 
 }
