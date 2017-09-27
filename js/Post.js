@@ -19,7 +19,18 @@ var back = document.createElement("div");
 var listOfPosts = [];
 var listOfTexts = [];
 var iterPost =0;
-//console.log("Hey  Up Here");
+
+
+var webGlGo = require('./webGl.js');
+var canvS = document.createElement("canvas");
+    canvS.setAttribute("width","400px");
+    canvS.setAttribute("height","400px");
+    canvS.setAttribute("display","none");
+    //canvS.setAttribute("position","fixed");
+    //canvS.className ="hide";
+    canvS.setAttribute("id","cnv");
+    //canvS.setAttribute("top","15%");
+    //canvS.setAttribute("left","20%");
 
 
  exports.createPost = function (parent, kind, src,imgsrc,title, text) { // 0 img, 1 music , 2 video,3 DDDmodel
@@ -129,20 +140,35 @@ function DDDmodelPost( miniPost,src,imgsrc, miniTitle,text) {
   // withoit logic for a  while
 
 
-  miniPost.onclick = function () {
+    miniPost.onclick = function () {
 
       	 if(miniPost.className == "MiNIVis"){
 
-          //let cnv = document.getElementById('canvs');
-          //    cnv.className = "visible";
-      			  miniPost.className = "cnvActive";
-      	     } else {
+           miniPost.appendChild(canvS);
+           canvS.style.display ="none";
+           $(miniPost.childNodes[1]).hide("slow");
+           $(miniPost.childNodes[0]).hide("slow",function () {
+             $(canvS).show("slow",function () {
 
-           //let cnv = document.getElementById('canvs');
-           //  cnv.className = "hide";
-      		 	miniPost.className ="MiNIVis";
+               miniPost.className = "miniInvis";
+             });
+           });
+
+
+      	     //miniPost.childNodes[0].style.display = "none";
+      	     //miniPost.childNodes[1].style.display = "none";
+           webGlGo.createDDD(canvS);
+      	   } else {
+	          $(canvS).hide("slow", function () {
+	               miniPost.removeChild(canvS);
+	          });
+            miniPost.className ="MiNIVis";
+            $(miniPost.childNodes[0]).show("slow");
+            $(miniPost.childNodes[1]).show("slow");
+			      //miniPost.childNodes[0].style.display = "inline-block";
+      			//miniPost.childNodes[1].style.display = "inline-block";
       		}
-};
+    };
 
 
 }

@@ -108,6 +108,14 @@ body{
 	bottom: 0;
 	width: 100%;
 }
+.animationTogle0 {
+	display : none;
+	
+}
+.animationTogle1 {
+	transition: linear 2s;	
+	display: block;
+	}
 .MiNIVis {
 	padding: 0;
 	margin: 2px;
