@@ -5,10 +5,23 @@
 //                  .wholePost zIndex = 20;
 
 var sidePlayer = require('./musicPlayer.js');
+var videoPlayer = require('./videoPlayer.js');
+
+
+var wholeVideoPlayer = videoPlayer.myPlayer();
+    wholeVideoPlayer.setAttribute("width","400px");
+    wholeVideoPlayer.setAttribute("height","400px");
+    wholeVideoPlayer.setAttribute("display","none");
+    wholeVideoPlayer.setAttribute("class","WholeImg");
+var listVideos = [];
+    iterVideo = 0;
+
+// needed for Image Posts
 var whole = document.createElement("div");
     whole.setAttribute("class","wholePost");
     whole.style.display= "none";
 
+// needed for Image Posts
 var back = document.createElement("div");
     back.setAttribute("class","backOfWhole");
     back.style.display = "none";
@@ -17,11 +30,12 @@ var back = document.createElement("div");
     document.body.appendChild(whole);
     document.body.appendChild(back);
 var listOfPosts = [];
-var listOfTexts = [];
-var iterPost =0;
+var iterPost = 0;
 
 
 var webGlGo = require('./webGl.js');
+var listOfDDD = [];
+var iterDDD =0;
 var canvS = document.createElement("canvas");
     canvS.setAttribute("width","400px");
     canvS.setAttribute("height","400px");
@@ -31,7 +45,6 @@ var canvS = document.createElement("canvas");
     canvS.setAttribute("id","cnv");
     //canvS.setAttribute("top","15%");
     //canvS.setAttribute("left","20%");
-
 
  exports.createPost = function (parent, kind, src,imgsrc,title, text) { // 0 img, 1 music , 2 video,3 DDDmodel
 
@@ -47,12 +60,12 @@ var canvS = document.createElement("canvas");
    if( kind === 1){
        musicPost(miniPost, src, imgsrc,title,text);
    }
-   if (kind ===2 ){
+   if (kind === 2){
       // miniPostVideo
+      videoPost(miniPost, src, imgsrc, title, text);
    }
-   if (kind ===3 ){
+   if (kind === 3){
       // DDDmodelPost
-
       DDDmodelPost(miniPost, src, imgsrc, title, text);
    }
 
@@ -105,30 +118,100 @@ function imgPost( miniPost,imgsrc, miniTitle,text) {
       tit.innerHTML = text;
       smth.appendChild(minImg);
       smth.appendChild(tit);
+
+      //needed for multiple posts!
+      // set index = 100+ IterPost
+      // IterPost++
+      //need IterPost == zIndex - 100;
       listOfPosts.push(smth);
 
     miniPost.onclick = function () {
       let DivWhole = listOfPosts[(this.childNodes[0].zIndex) - 100];
 
           whole.appendChild(DivWhole);
+          back.onclick = function () {
+             whole.removeChild(whole.childNodes[0]);
+             $(whole).hide("fast");
+             $(back).hide("slow");
+          }
           $(back).show("fast");
           $(whole).show("slow");
     }
-    back.onclick = function () {
-       whole.removeChild(whole.childNodes[0]);
-       $(whole).hide("fast");
-       $(back).hide("slow");
+
+
+}
+
+function videoPost( miniPost,src,imgsrc, miniTitle,text) {
+  let minImg = document.createElement('img');
+      minImg.setAttribute("class","miniImg");
+      minImg.setAttribute("src",imgsrc);
+  miniPost.appendChild(minImg);// 0
+      minImg.zIndex = 100 + iterVideo;
+      iterVideo++;
+
+  let tit = document.createElement("p");
+      tit.setAttribute("class","miniTitle");
+      tit.innerHTML = miniTitle;
+  miniPost.appendChild(tit);//1
+
+  let smth = document.createElement("div");
+      smth.setAttribute("class","DivWhole");
+
+      // create here Video player !
+      // put Video playe inside minImg
+
+      let tmpElem = document.createElement("source");
+          tmpElem.setAttribute('src',src);
+          tmpElem.setAttribute('type',"video/mp4");
+
+
+      // Do not touch
+      tit = document.createElement('p');
+      tit.setAttribute("class","wholeText");
+      tit.innerHTML = text;
+      smth.appendChild(tmpElem);
+      smth.appendChild(tit);
+
+      //needed for multiple posts!
+      // set index = 100+ IterPost
+      // IterPost++
+      //need IterPost == zIndex - 100;
+      listVideos.push(smth);
+
+    miniPost.onclick = function () {
+      // Minipost has 0- mini imge with i --> whole [0]source!
+
+      let Diole = listVideos[(this.childNodes[0].zIndex) - 100];
+          let tmpElemSource =  Diole.childNodes[0].cloneNode(false);
+          wholeVideoPlayer.appendChild(tmpElemSource);
+          wholeVideoPlayer.load();
+          whole.appendChild(wholeVideoPlayer);
+          whole.appendChild(Diole.childNodes[1].cloneNode(false));
+
+          back.onclick = function () {
+             wholeVideoPlayer.removeChild(wholeVideoPlayer.childNodes[0]);
+             $(whole).hide("fast");
+             $(back).hide("slow");
+             whole.removeChild(whole.childNodes[0]);
+             whole.removeChild(whole.childNodes[0]);
+          }
+          $(back).show("fast");
+          $(whole).show("slow", function () {
+              $(wholeVideoPlayer).show();
+          });
+
+
     }
 
 }
-function videoPost( miniPost,src,imgsrc, miniTitle,text) {
 
-}
 function DDDmodelPost( miniPost,src,imgsrc, miniTitle,text) {
   let minImg = document.createElement('img');
       minImg.setAttribute("class","miniImg");
       minImg.setAttribute("src",imgsrc);
   miniPost.appendChild(minImg);// 0
+      minImg.zIndex = 100 + iterDDD;
+      iterDDD++;
 
   let tit = document.createElement("p");
       tit.setAttribute("class","miniTitle");
@@ -138,10 +221,18 @@ function DDDmodelPost( miniPost,src,imgsrc, miniTitle,text) {
   //without a source for a while
   //without a text for a while.
   // withoit logic for a  while
+  let tmpElem = text;
+
+
+      //needed for multiple posts!
+      // set index = 100+ IterPost
+      // IterPost++
+      //need IterPost == zIndex - 100;
+      listOfDDD.push(tmpElem);
 
 
     miniPost.onclick = function () {
-
+        miniPost = this;
       	 if(miniPost.className == "MiNIVis"){
 
            miniPost.appendChild(canvS);
@@ -157,7 +248,7 @@ function DDDmodelPost( miniPost,src,imgsrc, miniTitle,text) {
 
       	     //miniPost.childNodes[0].style.display = "none";
       	     //miniPost.childNodes[1].style.display = "none";
-           webGlGo.createDDD(canvS);
+           webGlGo.createDDD(listOfDDD[miniPost.childNodes[0].zIndex-100],canvS);
       	   } else {
 	          $(canvS).hide("slow", function () {
 	               miniPost.removeChild(canvS);
@@ -169,6 +260,7 @@ function DDDmodelPost( miniPost,src,imgsrc, miniTitle,text) {
       			//miniPost.childNodes[1].style.display = "inline-block";
       		}
     };
+
 
 
 }

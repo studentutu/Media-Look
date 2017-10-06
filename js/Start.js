@@ -8,6 +8,7 @@ var sidePlayer = require('./js/musicPlayer.js');
 var musicGalerie = require('./js/music.js');
 var divImagesPosts = require('./js/imageS.js');
 var divDDDmodels = require('./js/3DModels.js');
+var videoGall = require('./js/videoDiv.js');
 var path = require('path');
 // use strict?
 
@@ -96,7 +97,10 @@ var goMP = function () {
     webWikipedia.createFrameAndWiki();
     divImagesPosts.allImgAndPosts(pth);
     divDDDmodels.allImgAndPosts(pth);
+    videoGall.videoForm(pth);
   }
-  setTimeout(afterEv,700);
+  //afterEv();
+  //setInterval();
+  setTimeout(afterEv,300);
 
 };

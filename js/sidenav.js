@@ -12,9 +12,8 @@ exports.createMenuFrom = function () {
     createLiForMe("Music","3");
     createLiForMe("Images","4");
     createLiForMe("Models 3D","5");
+    createLiForMe("Video", "6");
 
-
-    //createLiForMe("Togle", "fix");
 
 
     function createLiForMe(textToLi, id) {
@@ -24,7 +23,8 @@ exports.createMenuFrom = function () {
             li.setAttribute("id",id);
         ulForMenu.appendChild(li);
     }
-      {//Create fixed togle audio button
+      {
+        //Create fixed togle audio button
         let togl = document.createElement('div');
             togl.setAttribute("class","navigation");
             togl.innerHTML = "<h4>Audio Player</h4>";
