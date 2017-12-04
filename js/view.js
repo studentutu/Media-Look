@@ -21,9 +21,9 @@ exports.exactly = function (number) { // 0 wiki, 1 literature, 2 Galerie, fix au
       hide("webWikipedia");
       show("literature");
       show("musicDiv");
-      hide("models");
-      hide("DDDmodel");
-      hide("video");
+      show("models");
+      show("DDDmodel");
+      show("video");
     },
     "3": function () {
       hide("webWikipedia");
@@ -84,7 +84,7 @@ exports.exactly = function (number) { // 0 wiki, 1 literature, 2 Galerie, fix au
         };
 
         function show(id) {
-          
+
                 //jquery
                 $(document.getElementById(id)).show("slow");
                 document.getElementById(id).className = "visible";

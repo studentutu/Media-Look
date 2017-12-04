@@ -31,5 +31,14 @@ exports.videoForm = function (actPth) {
         imgSrcMini = actPth+"media/quality_control_certified_1005x1008.png";
   // parent, (kind 0-Img, 1-Aud, 2-Vid,  3-DDD), src,imgsrc,title, text
   posts.createPost(videoDiv,2,mainSRC,imgSrcMini,"Mario",text);
+        text = "Present WebGL";
+        mainSRC = actPth + "media/Webgl demos.mp4";
+        imgSrcMini = actPth+"media/pic1.png";
+  posts.createPost(videoDiv,2,mainSRC,imgSrcMini,text,text);
+        text = "Another Demo";
+        mainSRC = actPth + "media/WebGL_Game.mp4";
+        imgSrcMini = actPth+"media/pic2.png";
+  posts.createPost(videoDiv,2,mainSRC,imgSrcMini,text,text);
+
 
 };

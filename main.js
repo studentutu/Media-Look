@@ -75,7 +75,7 @@ app.on('ready', function () {
   ]
   var menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
-  
+
   }
 );
 

@@ -8,7 +8,7 @@ exports.createMenuFrom = function () {
     createLiForMe("Home","homeBTN");
     createLiForMe("Wikipedia","0");
     createLiForMe("Literature","1");
-    createLiForMe("Galerie","2");
+    createLiForMe("All Posts","2");
     createLiForMe("Music","3");
     createLiForMe("Images","4");
     createLiForMe("Models 3D","5");

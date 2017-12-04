@@ -1,4 +1,5 @@
-
+let shaderProgram;
+let gl;
 exports.getWEBGLgo= function getWEBGLgo(canvas){
 /* Step1: Prepare the canvas and get WebGL context */
 
@@ -73,7 +74,7 @@ exports.getWEBGLgo= function getWEBGLgo(canvas){
         gl.shaderSource(fragShader, fragCode);
         gl.compileShader(fragShader);
 
-        var shaderprogram = gl.createProgram();
+        shaderprogram = gl.createProgram();
         gl.attachShader(shaderprogram, vertShader);
         gl.attachShader(shaderprogram, fragShader);
         gl.linkProgram(shaderprogram);
@@ -228,3 +229,8 @@ exports.getWEBGLgo= function getWEBGLgo(canvas){
 
         animate(0);
 }
+exports.deleteThisProgram = function deleteThisProgram(){
+  
+   gl.useProgram(null);
+   gl.deleteProgram(shaderProgram);
+};

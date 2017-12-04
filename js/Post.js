@@ -245,14 +245,17 @@ function DDDmodelPost( miniPost,src,imgsrc, miniTitle,text) {
              });
            });
 
-
+          //Starts the WebGl content
       	     //miniPost.childNodes[0].style.display = "none";
       	     //miniPost.childNodes[1].style.display = "none";
            webGlGo.createDDD(listOfDDD[miniPost.childNodes[0].zIndex-100],canvS);
       	   } else {
+             //Ends the WebGL content
 	          $(canvS).hide("slow", function () {
 	               miniPost.removeChild(canvS);
+                 //webGlGo.deleteProgram(listOfDDD[miniPost.childNodes[0].zIndex-100]);
 	          });
+
             miniPost.className ="MiNIVis";
             $(miniPost.childNodes[0]).show("slow");
             $(miniPost.childNodes[1]).show("slow");

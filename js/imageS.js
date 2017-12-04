@@ -16,12 +16,15 @@ exports.allImgAndPosts = function (actPath) {
       imgDiv.appendChild(title);
   //posts direct under
   let text = "Imagine Dog out here!";
-  let imgSrcMini = actPath +"css/volumeBTN.png";
+  let imgSrcMini = actPath +"media/webGL.png";
 
   // parent, (kind 0-Img, 1-Aud, 2-Vid,  3-DDD), src,imgsrc,title, text // 6
-    post.createPost(imgDiv,0,"",imgSrcMini,"Image 1",text);
-    text = "Not Here";
-    imgSrcMini = actPath +"media/quality_control_certified_1005x1008.png";
-    post.createPost(imgDiv,0,"",imgSrcMini,"Image 2",text);
+    post.createPost(imgDiv,0,"",imgSrcMini,"WebGl",text);
+    text = "Go to Website of WebGL";
+    imgSrcMini = actPath +"media/pic5.png";
+    post.createPost(imgDiv,0,"",imgSrcMini,"Cool stuff",text);
+    text = "Electron Logo";
+    imgSrcMini = actPath +"media/electron.png";
+    post.createPost(imgDiv,0,"",imgSrcMini,"Electron",text);
 
 };
